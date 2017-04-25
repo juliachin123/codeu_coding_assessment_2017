@@ -1,0 +1,11 @@
+import java.util.*;
+public class Permeate{
+	public static void main(String[] args){
+		Scanner input = new Scanner(System.in);
+		String word = input.next();
+		ArrayList<String> list = new ArrayList<String>();
+		for (int i = 0; i < )
+		String[] count = 
+	}
+
+}

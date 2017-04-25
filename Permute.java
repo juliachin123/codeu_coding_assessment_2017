@@ -1,0 +1,48 @@
+import java.util.*;
+public class Permute{
+	public static void main(String[] args){
+		Scanner console = new Scanner(System.in);
+		String s = console.next();
+		System.out.println("Input string: ");
+		ArrayList<String> list = permute(s);
+		list = removeDuplicates(list);
+		Collections.sort(list);
+		for(int i = 0; i<list.size(); i++){
+			System.out.println(list.get(i));
+		}
+	}
+	public static ArrayList<String> permute(String s){
+		ArrayList<String> list = new ArrayList<String>();
+		recursion(list, s, 0, s.length()-1);
+		return list;
+	}
+	public static void recursion(ArrayList<String>list, String s, int l, int r){
+		if(l==r){
+			list.add(s);
+		}else{
+			for(int i = l; i<=r; i++){
+				s = swap(s, l, i);
+				recursion(list, s, l+1, r);
+				s = swap(s, l, i);
+			}
+		}
+	}
+	public static String swap(String a, int i, int j){
+		char temp;
+		char[] charArray = a.toCharArray();
+		temp = charArray[i];
+		charArray[i] = charArray[j];
+		charArray[j] = temp;
+		return String.valueOf(charArray);
+	}
+	public static ArrayList<String> removeDuplicates(ArrayList<String> names){
+		ArrayList<String> list = new ArrayList<String>();
+		for(int i = 0; i<names.size(); i++){
+			String name = names.get(i);
+			if(!list.contains(name.toLowerCase()) && !list.contains(name.toUpperCase())){
+				list.add(name);
+			}
+		}
+		return list;
+	}
+}
